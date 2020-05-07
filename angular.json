@@ -28,9 +28,14 @@
               "src/assets"
             ],
             "styles": [
+
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "movieApp"
+    }
+  },
+  "defaultProject": "movieApp",
+  "cli": {
+    "analytics": "ea3af92e-d86f-4e3f-82d9-ec73fb70dfc7"
+  }
 }
