@@ -1,7 +1,10 @@
+/* Modules */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+/* Components */
 import { AppComponent } from './app.component';
 import { SharedButtonComponent } from './shared/components/shared-button/shared-button.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
@@ -13,6 +16,8 @@ import { MovieDetailComponent } from './features/feature-movie/components/movie-
 import { MovieFormComponent } from './features/feature-movie/components/movie-form/movie-form.component';
 import { MovieListComponent } from './features/feature-movie/components/movie-list/movie-list.component';
 import { NoPageFoundComponent } from './core/components/no-page-found/no-page-found.component';
+/* Services */
+import { StorageService } from './core/services/storage.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ import { NoPageFoundComponent } from './core/components/no-page-found/no-page-fo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(StorageService)
   ],
   providers: [],
   bootstrap: [AppComponent]

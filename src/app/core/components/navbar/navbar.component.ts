@@ -9,7 +9,7 @@ import { AppSettings } from './../../constants/app-settings';
 })
 export class NavbarComponent implements OnInit {
 
-  public routes: Array<Routes> = AppSettings && AppSettings.ROUTES;
+  public routes: Array<Routes> = AppSettings && AppSettings.getRoutes;
 
   constructor() { }
 
