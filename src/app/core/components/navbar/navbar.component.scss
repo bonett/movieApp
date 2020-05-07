@@ -1,0 +1,17 @@
+.navbar {
+    background-color: var(--dark);
+
+    &-brand {
+        color: var(--grey);
+    }
+
+    .nav {
+        &-link {
+            color: var(--grey);
+
+            &.active {
+                color: var(--white);
+            }
+        }
+    }
+}

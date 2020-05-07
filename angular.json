@@ -30,7 +30,8 @@
             "styles": [
 
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"
+              "src/app/styles/variables.scss",
+              "src/app/styles/global.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
