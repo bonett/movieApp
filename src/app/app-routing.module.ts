@@ -9,8 +9,8 @@ import { NoPageFoundComponent } from './core/components/no-page-found/no-page-fo
 
 /* Routes */
 const routes: Routes = [
-  { path: '', redirectTo: '/movies', pathMatch: 'full' },
-  { path: 'movies', component: HomeMovieComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeMovieComponent },
   { path: 'new_movie', component: NewMovieComponent },
   { path: 'top_movies', component: TopMovieComponent },
 

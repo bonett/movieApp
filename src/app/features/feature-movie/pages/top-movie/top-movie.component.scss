@@ -1,0 +1,17 @@
+.top {
+    padding: 20px;
+
+    &__heading {
+        margin: 4px;
+        padding: 6px 20px;
+
+        &--text {
+            color: var(--white);
+            font-weight: 800;
+        }
+    }
+
+    &__content {
+
+    }
+}

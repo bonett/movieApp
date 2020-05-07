@@ -1,28 +1,33 @@
 .navbar {
-    background-color: var(--dark);
+    background-color: var(--blue-dark-contrast-2);
+    height: 64px;
     padding-bottom: 0;
     padding-top: 0;
 
     &-brand {
-        color: var(--grey);
+        color: var(--white);
         font-size: 1.4em;
+        font-weight: 800;
+        padding: 0 20px;
     }
 
     &-nav {
+        height: 62px;
         margin: 0 0 0 20px;
     }
 
     .nav {
         &-link {
             color: var(--grey);
-            height: 60px;
+            font-size: 1.2em;
+            font-weight: 400;
             padding: 18px 10px;
             text-align: center;
             width: 180px;
 
             &.active {
-                background-color: var(--black);
-                color: var(--white);
+                background-color: var(--blue-dark-contrast);
+                color: var(--purple);
             }
         }
     }
