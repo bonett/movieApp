@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+
 /* Components */
 import { AppComponent } from './app.component';
 import { SharedButtonComponent } from './shared/components/shared-button/shared-button.component';
-import { DateFormatPipe } from './shared/pipes/date-format.pipe';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { HomeMovieComponent } from './features/feature-movie/pages/home-movie/home-movie.component';
 import { TopMovieComponent } from './features/feature-movie/pages/top-movie/top-movie.component';
@@ -16,6 +17,7 @@ import { MovieDetailComponent } from './features/feature-movie/components/movie-
 import { MovieFormComponent } from './features/feature-movie/components/movie-form/movie-form.component';
 import { MovieListComponent } from './features/feature-movie/components/movie-list/movie-list.component';
 import { NoPageFoundComponent } from './core/components/no-page-found/no-page-found.component';
+
 /* Services */
 import { StorageService } from './core/services/storage.service';
 
@@ -23,7 +25,6 @@ import { StorageService } from './core/services/storage.service';
   declarations: [
     AppComponent,
     SharedButtonComponent,
-    DateFormatPipe,
     NavbarComponent,
     HomeMovieComponent,
     TopMovieComponent,
@@ -37,7 +38,8 @@ import { StorageService } from './core/services/storage.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(StorageService)
+    InMemoryWebApiModule.forRoot(StorageService),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

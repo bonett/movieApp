@@ -1,4 +1,10 @@
+/* Modules */
 import { Component, OnInit } from '@angular/core';
+
+/* Model */
+import { Movie } from '../../models/movie';
+
+/* Service */
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -9,13 +15,15 @@ import { MovieService } from '../../services/movie.service';
 })
 export class HomeMovieComponent implements OnInit {
 
+  public movies: Array<Movie>;
+
   constructor(
     private _movieService: MovieService
   ) { }
 
   ngOnInit(): void {
-    this._movieService.getMovies().subscribe((data: any[]) => {
-      console.log('get all movies', data);
+    this._movieService.getMovies().subscribe((res: any[]) => {
+      this.movies = res;
     });
   }
 

@@ -2,18 +2,14 @@
     <main>
         <div class="row">
             <div class="col-3">
-                <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
+                <div class="list-group">
+                    <a *ngFor="let movie of movies; index as i" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{movie.title}}</h5>
+                        </div>
+                        <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
+                    </a>
+                </div>
             </div>
             <div class="col-3">
                 <div class="card">
