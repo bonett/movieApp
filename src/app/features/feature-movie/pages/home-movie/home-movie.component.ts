@@ -25,8 +25,15 @@ export class HomeMovieComponent implements OnInit {
     });
   }
 
-  onSelect(movie: Movie): void {
+  onSelectMovie(movie: Movie): void {
     this.selectedMovie = movie;
+  }
+
+  onRemoveMovie(movie: Movie) {
+    console.log(movie);
+    this._movieService.deleteMovie(movie).subscribe(res => {
+      console.log(res, this.movies)
+   });
   }
 
 }

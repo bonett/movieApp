@@ -64,7 +64,7 @@ export class NewMovieComponent implements OnInit {
     };
 
     this._movieService.createMovie(payload).subscribe((response)=>{
-      this._router.navigate(['/home']);
+      this._router.navigate(['/movies']);
     });
 
 

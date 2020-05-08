@@ -5,10 +5,16 @@
                 <div *ngIf="movies" class="row">
                     <div class="col-12">
                         <div *ngFor="let movie of movies; index as i" class="card"
-                            [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
+                            [class.selected]="movie === selectedMovie" (click)="onSelectMovie(movie)">
                             <div class="card-body">
-                                <h5 class="card-title">{{movie.title}}</h5>
-                                <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">{{movie.title}}</h5>
+                                    <a (click)="onRemoveMovie(movie)" class="icon-color" [hidden]="movie !== selectedMovie"><i
+                                            class="fas fa-trash"></i></a>
+                                </div>
+                                <div class="d-flex justify-content-start">
+                                    <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
+                                </div>
                             </div>
                         </div>
                     </div>

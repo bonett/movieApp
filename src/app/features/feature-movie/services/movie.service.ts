@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { catchError } from 'rxjs/operators';
 import { Movie } from './../models/movie';
 import { AppSettings } from 'src/app/core/constants/app-settings';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,46 +13,44 @@ export class MovieService {
   private url_base: string = AppSettings.getApi('movies');
 
   constructor(
-    private httpClient: HttpClient
+    private _httpClient: HttpClient
   ) { }
 
   /**
    * Allows get all movies
    * @param null
    */
-  public getMovies() {
-    return this.httpClient.get(this.url_base);
-  }
-
-  /**
-   * Allows get movie by id
-   * @param id number
-   */
-  public getMovieById(id) {
-    return this.httpClient.get(`${this.url_base}/${id}`);
+  public getMovies(): Observable<Movie[]> {
+    return this._httpClient.get<Movie[]>(this.url_base)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   /**
    * Allows create new movie
    * @param movie Movie 
    */
-  public createMovie(movie: Movie) {
-    return this.httpClient.post(`${this.url_base}`, movie)
+  createMovie(movie: Movie): Observable<Movie> {
+    return this._httpClient.post<Movie>(this.url_base, movie)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   /**
    * Allows remove movie selected by Id
-   * @param id number
+   * @param movie number | Movie
    */
-  public deleteMovie(id) {
-    return this.httpClient.delete(`${this.url_base}/${id}`)
+  deleteMovie(movie: number | Movie): Observable<Movie> {
+    const id = typeof movie === 'number' ? movie : movie.id;
+    return this._httpClient.delete<Movie>(`${this.url_base}/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  /**
-   * Allows update movie selected by Id
-   * @param id number
-   */
-  public updateMovie(movie: Movie) {
-    return this.httpClient.put(`${this.url_base}/${movie.id}`, movie)
+  private handleError(handleError: any): import("rxjs").OperatorFunction<Movie[], any> {
+    throw new Error("Method not implemented.");
   }
 }
