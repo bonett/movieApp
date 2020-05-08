@@ -20,7 +20,7 @@ export class MovieFormComponent implements OnInit {
   ) {
     this.movieForm = new FormGroup({
       'title': new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-      'release': new FormControl('', Validators.required),
+      'release': new FormControl(this.currentDate(), Validators.required),
       'image': new FormControl(null, Validators.required),
       'description': new FormControl('', Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)]))
     });
@@ -68,6 +68,14 @@ export class MovieFormComponent implements OnInit {
       description: form.description
     };
     this.onNewMovie.emit(payload);
+  }
+
+  /**
+   * Allows get current date
+   */
+  private currentDate() {
+    const currentDate = new Date();
+    return currentDate.toISOString().substring(0, 10);
   }
 
 }
