@@ -1,6 +1,6 @@
 .navbar {
     background-color: var(--blue-dark-contrast);
-    height: 64px;
+    height: 66px;
     padding-bottom: 0;
     padding-top: 0;
 
@@ -18,12 +18,12 @@
 
     .nav {
         &-link {
+            background-color: var(--blue-dark-contrast);
             color: var(--grey);
             font-size: 1.2em;
             font-weight: 400;
-            padding: 18px 10px;
+            padding: 18px 40px;
             text-align: center;
-            width: 180px;
 
             &.active {
                 background-color: var(--active);

@@ -12,8 +12,11 @@
     }
 
     &__content {
+        display: block;
+        height: calc(72vh - 56px);
+        overflow-y: scroll;
+
         &-item {
-            border-bottom: 1px solid var(--grey);
             margin: 0;
             padding: 20px 0;
 
@@ -30,6 +33,11 @@
                     &--title {
                         color: var(--dark);
                         font-size: 2.2em;
+                    }
+
+                    h4,
+                    h5 {
+                        margin: 20px 0;
                     }
 
                     &--date {
