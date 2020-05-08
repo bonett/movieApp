@@ -11,7 +11,7 @@
             <div *ngIf="!showMedia" class="d-flex flex-row justify-content-between">
                 <h4>{{movie.title}}</h4>
                 <a (click)="handleRemoveMovie(movie)" class="icon--color" [hidden]="movie !== selectedMovie"><i
-                        class="fas fa-trash"></i></a>
+                        class="fa fa-trash"></i></a>
             </div>
             <div *ngIf="!showMedia" class="d-flex flex-row justify-content-start">
                 <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
