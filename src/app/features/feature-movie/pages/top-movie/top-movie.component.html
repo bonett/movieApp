@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <section>
+        <div class="row content">
+            <div class="col-12">
+                <h1>TOP 5 Movies</h1>
+            </div>
+
+            <div *ngIf="movies" class="col-12 content-list">
+                <ng-container *ngTemplateOutlet="movieList"></ng-container>
+            </div>
+
+            <div *ngIf="!movies" class="col-12">
+                <ng-container *ngTemplateOutlet="skeletonLoader"></ng-container>
+            </div>
+        </div>
+    </section>
+</div>
+
+<ng-template #movieList>
+    <app-movie-list [movieList]="movies" [showMedia]=true></app-movie-list>
+</ng-template>
+
+<ng-template #skeletonLoader>
+    <div class="card" *ngFor="let movie of [1,2,3,4,5]">
+        <div class="media">
+            <div class="align-self-center mr-3">
+                <ngx-skeleton-loader count="1" [theme]="{ 
+                'border-radius': '2px',
+                'height': '268px',
+                'width': '182px',
+                'background-color': '#e4e4e4'
+            }"></ngx-skeleton-loader>
+            </div>
+            <div class="media-body">
+                <div>
+                    <ngx-skeleton-loader count="1" [theme]="{ 
+                    'border-radius': '2px',
+                    'height': '40px',
+                    'width': '95%',
+                    'background-color': '#e4e4e4'
+                }"></ngx-skeleton-loader>
+                </div>
+                <div>
+                    <ngx-skeleton-loader count="1" [theme]="{ 
+                    'border-radius': '2px',
+                    'height': '25px',
+                    'width': '55%',
+                    'background-color': '#e4e4e4'
+                }"></ngx-skeleton-loader>
+                </div>
+                <div>
+                    <ngx-skeleton-loader count="1" [theme]="{ 
+                    'border-radius': '2px',
+                    'height': '12px',
+                    'width': '100%',
+                    'background-color': '#e4e4e4'
+                }"></ngx-skeleton-loader>
+                </div>
+                <div>
+                    <ngx-skeleton-loader count="1" [theme]="{ 
+                    'border-radius': '2px',
+                    'height': '12px',
+                    'width': '100%',
+                    'background-color': '#e4e4e4'
+                }"></ngx-skeleton-loader>
+                </div>
+                <div>
+                    <ngx-skeleton-loader count="1" [theme]="{ 
+                    'border-radius': '2px',
+                    'height': '12px',
+                    'width': '100%',
+                    'background-color': '#e4e4e4'
+                }"></ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
