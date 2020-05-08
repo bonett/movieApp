@@ -16,10 +16,13 @@ export class TopMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._movieService.getMovies()
-    .subscribe((res: Array<Movie>) => {
-      this.movies = res;
-    });
+    this.getTop5Movies();
   }
 
+  getTop5Movies() {
+    this._movieService.getTopMovies()
+      .subscribe((res: Array<Movie>) => {
+        this.movies = res;
+      });
+  }
 }

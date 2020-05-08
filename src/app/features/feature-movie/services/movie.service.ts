@@ -4,23 +4,37 @@ import { catchError } from 'rxjs/operators';
 import { Movie } from './../models/movie';
 import { AppSettings } from 'src/app/core/constants/app-settings';
 import { Observable } from 'rxjs';
+import { StorageService } from 'src/app/core/services/storage.service';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
+export class MovieService extends StorageService {
 
   private url_base: string = AppSettings.getApi('movies');
 
   constructor(
     private _httpClient: HttpClient
-  ) { }
+  ) {
+    super();
+    this.loadStorage();
+  }
 
   /**
    * Allows get all movies
    * @param null
    */
-  public getMovies(): Observable<Movie[]> {
+  public getAllMovies() {
+    const data = this.getLocalStorage();
+    return data;
+  }
+
+  /**
+   * Allows get top 5 movies
+   * @param null
+   */
+  public getTopMovies(): Observable<Movie[]> {
     return this._httpClient.get<Movie[]>(this.url_base)
       .pipe(
         catchError(this.handleError)
@@ -28,26 +42,33 @@ export class MovieService {
   }
 
   /**
-   * Allows create new movie
-   * @param movie Movie 
-   */
-  createMovie(movie: Movie): Observable<Movie> {
-    return this._httpClient.post<Movie>(this.url_base, movie)
-      .pipe(
-        catchError(this.handleError)
-      );
+     * Allows create new movie
+     * @param movie Movie 
+     */
+  createMovie(newMovie: Movie) {
+    let data = this.getLocalStorage();
+    console.log('new', newMovie);
+    data.push(newMovie);
+    localStorage.setItem('movies', JSON.stringify(data));
   }
 
   /**
    * Allows remove movie selected by Id
    * @param movie number | Movie
    */
-  deleteMovie(movie: number | Movie): Observable<Movie> {
+  deleteMovie(movie: Movie) {
     const id = typeof movie === 'number' ? movie : movie.id;
-    return this._httpClient.delete<Movie>(`${this.url_base}/${id}`)
-      .pipe(
-        catchError(this.handleError)
-      );
+    let data = this.getLocalStorage();
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id == id) {
+        data.splice(i, 1);
+      }
+    }
+    localStorage.setItem('movies', JSON.stringify(data));
+  }
+
+  private getLocalStorage() {
+    return JSON.parse(localStorage.getItem('movies'));
   }
 
   private handleError(handleError: any): import("rxjs").OperatorFunction<Movie[], any> {

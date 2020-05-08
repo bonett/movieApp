@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
 
+  @Input() movies: any;
+  @Output() onSelectMovie = new EventEmitter<Movie>();
+  @Output() onRemoveMovie = new EventEmitter<Movie>();
+
+  public selectedMovie: Object = null;
+  
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  handleSelectMovie(movie: Movie): void {
+    this.selectedMovie = movie;
+    this.onSelectMovie.emit(movie);
+  }
+
+  handleRemoveMovie(movie: Movie) {
+    this.onRemoveMovie.emit(movie);
   }
 
 }

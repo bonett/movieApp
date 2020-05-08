@@ -10,30 +10,36 @@ import { MovieService } from '../../services/movie.service';
 })
 export class HomeMovieComponent implements OnInit {
 
-  public movies: Array<Movie>;
-  public selectedMovie: Movie;
+  public movies: Array<Movie> = [];
+  public selectedMovie: Object = null;
 
   constructor(
     private _movieService: MovieService
   ) { }
 
   ngOnInit(): void {
-    this._movieService.getMovies()
-    .subscribe((res: Array<Movie>) => {
-      console.log(res)
-      this.movies = res;
-    });
+    this.getMovies();
   }
 
-  onSelectMovie(movie: Movie): void {
-    this.selectedMovie = movie;
+  getMovies() {
+    this.movies = this._movieService.getAllMovies();
   }
 
-  onRemoveMovie(movie: Movie) {
+  removeMovie(movie: Movie) {
+    for (let i = 0; i < this.movies.length; i++) {
+      if (this.movies[i].id == movie.id) {
+        this.movies.splice(i, 1);
+      }
+    }
+
+    this._movieService.deleteMovie(movie);
+    this.selectedMovie = null;
+  }
+
+  selectMovie(movie: Movie) {
     console.log(movie);
-    this._movieService.deleteMovie(movie).subscribe(res => {
-      console.log(res, this.movies)
-   });
+    
+    this.selectedMovie = movie;
   }
 
 }

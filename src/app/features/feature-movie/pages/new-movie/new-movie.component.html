@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <main>
+    <section>
         <div class="row add__movie">
             <div class="col-12 add__movie-content">
                 <form [formGroup]="movieForm" (ngSubmit)="onSubmitMovie()">
@@ -31,8 +31,8 @@
                                 <div class="col-sm">
                                     <div class="form-group">
                                         <label for="photo">Movie Image</label>
-                                        <input type="file" (change)="onFileChange($event)" formControlName="photo">
-                                        <small *ngIf="photo.invalid && (photo.dirty || photo.touched)"
+                                        <input type="file" (change)="onFileChange($event)" formControlName="image">
+                                        <small *ngIf="image.invalid && (image.dirty || image.touched)"
                                             class="form-text text-danger">Invalid or missing image</small>
                                     </div>
                                 </div>
@@ -52,5 +52,5 @@
                 </form>
             </div>
         </div>
-    </main>
+    </section>
 </div>
