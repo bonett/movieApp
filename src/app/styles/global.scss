@@ -17,12 +17,8 @@ main {
     padding: 20px;
 
     &-header {
-        align-items: center;
         background-color: var(--white);
         border-bottom: 1px solid var(--grey);
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         padding: 10px;
 
         &--title {
@@ -44,9 +40,23 @@ main {
         &:hover,
         &:focus,
         &:visited,
+        &:disabled,
+        &:active,
+        &:not(:disabled),
+        &:not(.disabled):active
+        &[disabled],
         &:active {
             background-color: var(--orange);
             border-color: var(--orange);
         }
+    }
+}
+
+form {
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
     }
 }

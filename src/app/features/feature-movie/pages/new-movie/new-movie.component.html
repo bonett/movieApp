@@ -4,9 +4,9 @@
             <div class="col-12 add__movie-content">
                 <form [formGroup]="movieForm" (ngSubmit)="onSubmitMovie()">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between">
                             <h2 class="card-header--title">Add movie</h2>
-                            <button class="btn btn-primary">Add new movie</button>
+                            <button class="btn btn-primary" [disabled]="!movieForm.valid">Add new movie</button>
                         </div>
                         <div class="card-body">
                             <div class="row">

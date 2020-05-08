@@ -1,8 +1,5 @@
-/* Modules */
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-
-/* Constants */
 import { AppSettings } from './../constants/app-settings';
 
 @Injectable({

@@ -2,23 +2,6 @@
     <main>
         <div class="row">
             <div class="col-3">
-                <div *ngIf="!movies" class="row">
-                    <div class="col-12">
-                        <div *ngFor="let movie of [1, 2, 3, 4 ,5]; index as i" class="card">
-                            <div class="card-body">
-                                <ngx-skeleton-loader count="1" [theme]="{ 
-                                    height: '20px',
-                                    width: '90%'
-                                  }"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 
-                                    height: '10px',
-                                    width: '65%',
-                                    margin: '0px'
-                                  }"></ngx-skeleton-loader>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div *ngIf="movies" class="row">
                     <div class="col-12">
                         <div *ngFor="let movie of movies; index as i" class="card">
@@ -30,9 +13,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-9">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 d-flex justify-content-end">
                         <a class="btn btn-primary" routerLink="/new_movie">Add new movie</a>
                     </div>
                 </div>
@@ -45,6 +28,6 @@
                     </div>
                 </div>
             </div>
-        </div>>
+        </div>
     </main>
 </div>
