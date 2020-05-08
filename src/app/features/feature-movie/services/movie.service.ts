@@ -26,7 +26,7 @@ export class MovieService extends StorageService {
    * @param null
    */
   public getAllMovies() {
-    const data = this.getLocalStorage();
+    const data = this.getStorage();
     return data;
   }
 
@@ -46,9 +46,9 @@ export class MovieService extends StorageService {
      * @param movie Movie 
      */
   createMovie(newMovie: Movie) {
-    let data = this.getLocalStorage();
+    let data = this.getStorage();
     data.push(newMovie);
-    localStorage.setItem('movies', JSON.stringify(data));
+    sessionStorage.setItem('movies', JSON.stringify(data));
   }
 
   /**
@@ -57,17 +57,17 @@ export class MovieService extends StorageService {
    */
   deleteMovie(movie: Movie) {
     const id = typeof movie === 'number' ? movie : movie.id;
-    let data = this.getLocalStorage();
+    let data = this.getStorage();
 
     data = _.remove(data,(currentMovie) => {
       return currentMovie.id !== movie.id
     });
 
-    localStorage.setItem('movies', JSON.stringify(data));
+    sessionStorage.setItem('movies', JSON.stringify(data));
   }
 
-  private getLocalStorage() {
-    return JSON.parse(localStorage.getItem('movies'));
+  private getStorage() {
+    return JSON.parse(sessionStorage.getItem('movies'));
   }
 
   private handleError(handleError: any): import("rxjs").OperatorFunction<Movie[], any> {

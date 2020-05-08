@@ -21,8 +21,8 @@ export class StorageService implements InMemoryDbService {
    * Allows create local storage of movies
    */
   loadStorage() {
-    if (localStorage.getItem('movies') === null || localStorage.getItem('movies') == undefined) {
-      localStorage.setItem('movies', JSON.stringify([]));
+    if (sessionStorage.getItem('movies') === null || sessionStorage.getItem('movies') == undefined) {
+      sessionStorage.setItem('movies', JSON.stringify([]));
     }
   }
 }
