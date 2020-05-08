@@ -13,6 +13,7 @@ export class MovieFormComponent implements OnInit {
   @Output() onNewMovie = new EventEmitter<Movie>();
 
   public movieForm: FormGroup;
+  public pathFile: any;
 
   constructor(
     private _changeDetector: ChangeDetectorRef,
@@ -38,14 +39,19 @@ export class MovieFormComponent implements OnInit {
    */
   onFileChange(event) {
 
-    let reader = new FileReader(),
-        file = event.target.files[0];
-    
-    reader.readAsDataURL(file);
+    const reader = new FileReader();
 
-    reader.onload = () => {
-      this.movieForm.get('image').setValue(reader.result);
-    };
+    if (event.target.files && event.target.files.length) {
+
+      const [file] = event.target.files;
+
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.pathFile = reader.result;
+      };
+
+      this._changeDetector.markForCheck();
+    }
   }
 
   /**
@@ -58,7 +64,7 @@ export class MovieFormComponent implements OnInit {
       id: uuid(),
       title: form.title,
       release: form.release,
-      image: form.image,
+      image: this.pathFile,
       description: form.description
     };
     this.onNewMovie.emit(payload);

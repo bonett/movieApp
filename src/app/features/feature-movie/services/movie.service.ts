@@ -5,7 +5,7 @@ import { Movie } from './../models/movie';
 import { AppSettings } from 'src/app/core/constants/app-settings';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/core/services/storage.service';
-import * as _ from 'lodash';
+import _ from "lodash";
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +47,6 @@ export class MovieService extends StorageService {
      */
   createMovie(newMovie: Movie) {
     let data = this.getLocalStorage();
-    console.log('new', newMovie);
     data.push(newMovie);
     localStorage.setItem('movies', JSON.stringify(data));
   }
@@ -59,11 +58,11 @@ export class MovieService extends StorageService {
   deleteMovie(movie: Movie) {
     const id = typeof movie === 'number' ? movie : movie.id;
     let data = this.getLocalStorage();
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id == id) {
-        data.splice(i, 1);
-      }
-    }
+
+    data = _.remove(data,(currentMovie) => {
+      return currentMovie.id !== movie.id
+    });
+
     localStorage.setItem('movies', JSON.stringify(data));
   }
 
