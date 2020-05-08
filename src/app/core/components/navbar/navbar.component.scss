@@ -1,19 +1,18 @@
 .navbar {
-    background-color: var(--blue-dark-contrast);
-    height: 66px;
-    padding-bottom: 0;
     padding-top: 0;
+
+    @media (min-width: 992px) {
+        height: 62px;
+    }
 
     &-brand {
         color: var(--light);
         font-size: 1.4em;
         font-weight: 800;
-        padding: 0 20px;
     }
 
-    &-nav {
-        height: 62px;
-        margin: 0 0 0 20px;
+    &-collapse {
+        margin-top: 6px;
     }
 
     .nav {

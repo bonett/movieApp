@@ -29,7 +29,7 @@ section {
 
         &-sidebar {
             display: block;
-            height: calc(92vh - 56px);
+            height: calc(30vh - 56px);
             overflow-y: scroll;
         }
 
@@ -38,6 +38,18 @@ section {
             height: calc(84vh - 56px);
             overflow-y: scroll;
         }
+
+        @media (min-width: 768px) {
+            &-sidebar {
+                height: calc(92vh - 56px);
+            }
+        }
+    }
+}
+
+.bg {
+    &-dark {
+        background-color: var(--blue-dark-contrast) !important;
     }
 }
 
