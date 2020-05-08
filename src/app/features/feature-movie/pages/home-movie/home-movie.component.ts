@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
+import _ from "lodash";
 
 @Component({
   selector: 'app-home-movie',
@@ -21,21 +22,31 @@ export class HomeMovieComponent implements OnInit {
     this.getMovies();
   }
 
+  /**
+   * Allows get all movies from storage
+   */
   getMovies() {
     this.movies = this._movieService.getAllMovies();
   }
 
+  /**
+   * Allows remove movie from movie list
+   * @param movie Movie
+   */
   removeMovie(movie: Movie) {
-    for (let i = 0; i < this.movies.length; i++) {
-      if (this.movies[i].id == movie.id) {
-        this.movies.splice(i, 1);
-      }
-    }
+
+    this.movies = _.remove(this.movies,(currentMovie) => {
+      return currentMovie.id !== movie.id
+    });
 
     this._movieService.deleteMovie(movie);
     this.selectedMovie = null;
   }
 
+  /**
+   * Allows select movie to show details
+   * @param movie Movie
+   */
   selectMovie(movie: Movie) {
     this.selectedMovie = movie;
   }

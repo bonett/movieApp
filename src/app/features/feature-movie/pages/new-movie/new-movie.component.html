@@ -2,54 +2,7 @@
     <section>
         <div class="row add__movie">
             <div class="col-12 add__movie-content">
-                <form [formGroup]="movieForm" (ngSubmit)="onSubmitMovie()">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <h2 class="card-header--title">Add movie</h2>
-                            <button class="btn btn-primary" [disabled]="!movieForm.valid">Add new movie</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="form-group">
-                                        <label for="title">Movie Title</label>
-                                        <input type="text" formControlName="title" placeholder="Enter movie title ..."
-                                            class="form-control" id="title" name="title">
-                                        <small *ngIf="title.invalid && (title.dirty || title.touched)"
-                                            class="form-text text-danger">Invalid or missing movie title</small>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="form-group">
-                                        <label for="release">Release Date</label>
-                                        <input type="date" formControlName="release" class="form-control" id="release"
-                                            name="release">
-                                        <small *ngIf="release.invalid && (release.dirty || release.touched)"
-                                            class="form-text text-danger">Invalid or missing release date</small>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="form-group">
-                                        <label for="photo">Movie Image</label>
-                                        <input type="file" (change)="onFileChange($event)" formControlName="image">
-                                        <small *ngIf="image.invalid && (image.dirty || image.touched)"
-                                            class="form-text text-danger">Invalid or missing image</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="description">Description:</label>
-                                        <textarea formControlName="description"
-                                            placeholder="Enter description movie ..." class="form-control"
-                                            id="description" name="description" rows="6"></textarea>
-                                        <small *ngIf="description.invalid && (description.dirty || description.touched)"
-                                            class="form-text text-danger">Invalid or missing description</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <app-movie-form (onNewMovie)="saveMovie($event)"></app-movie-form>
             </div>
         </div>
     </section>
