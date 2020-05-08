@@ -1,1 +1,9 @@
-<p>new-movie works!</p>
+<div class="container-fluid">
+    <section>
+        <div class="row add__movie">
+            <div class="col-12 add__movie-content">
+                <app-movie-form (onNewMovie)="saveMovie($event)"></app-movie-form>
+            </div>
+        </div>
+    </section>
+</div>

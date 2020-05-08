@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
+import { Router } from '@angular/router';
+import { Movie } from '../../models/movie';
+
 
 @Component({
   selector: 'app-new-movie',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMovieComponent implements OnInit {
 
-  constructor() { }
+  public movies: Array<Movie> = [];
 
-  ngOnInit(): void {
+  constructor(
+    private _movieService: MovieService,
+    private _router: Router
+  ) {}
+
+  
+  ngOnInit(): void {}
+
+  /**
+   * Allows create new movie
+   * @param movie 
+   */
+  saveMovie(movie: Movie) {
+    this.movies.push(movie);
+    this._movieService.createMovie(movie);
+    this._router.navigate(['/']);
   }
-
 }
