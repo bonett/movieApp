@@ -15,7 +15,7 @@ export class AppSettings {
    */
   public static getRoutes = [
     {
-      path: '/home',
+      path: '/movies',
       name: 'Home'
     },
     {

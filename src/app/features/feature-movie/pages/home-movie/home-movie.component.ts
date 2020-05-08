@@ -11,6 +11,7 @@ import { MovieService } from '../../services/movie.service';
 export class HomeMovieComponent implements OnInit {
 
   public movies: Array<Movie>;
+  public selectedMovie: Movie;
 
   constructor(
     private _movieService: MovieService
@@ -22,6 +23,10 @@ export class HomeMovieComponent implements OnInit {
       console.log(res)
       this.movies = res;
     });
+  }
+
+  onSelect(movie: Movie): void {
+    this.selectedMovie = movie;
   }
 
 }

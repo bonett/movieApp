@@ -4,7 +4,8 @@
             <div class="col-3">
                 <div *ngIf="movies" class="row">
                     <div class="col-12">
-                        <div *ngFor="let movie of movies; index as i" class="card">
+                        <div *ngFor="let movie of movies; index as i" class="card"
+                            [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
                             <div class="card-body">
                                 <h5 class="card-title">{{movie.title}}</h5>
                                 <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
@@ -19,12 +20,21 @@
                         <a class="btn btn-primary" routerLink="/new_movie">Add new movie</a>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">Featured</div>
+                <div *ngIf="selectedMovie" class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h2 class="card-header--title">{{selectedMovie.title}}</h2>
+                        <small>Release Date: {{selectedMovie.release | dateFormat: 'DD MMMM YYYY'}}</small>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="row">
+                            <div class="col-12">
+                                <img src={{selectedMovie.image}} class="align-self-center mr-3"
+                                    alt={{selectedMovie.title}}>
+                            </div>
+                            <div class="col-12">
+                                <p><strong>Movie Description:</strong> {{selectedMovie.description}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -59,7 +59,7 @@ export class NewMovieComponent implements OnInit {
     const payload = {
       title: form.title,
       release: form.release,
-      photo: form.photo,
+      image: form.photo,
       description: form.description
     };
 
