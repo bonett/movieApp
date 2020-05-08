@@ -8,7 +8,7 @@ import { Movie } from '../../models/movie';
 })
 export class MovieListComponent implements OnInit {
 
-  @Input() movies: any;
+  @Input() movieList: Array<Movie>;
   @Output() onSelectMovie = new EventEmitter<Movie>();
   @Output() onRemoveMovie = new EventEmitter<Movie>();
 
@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  handleSelectMovie(movie: Movie): void {
+  handleSelectMovie(movie: Movie) {
     this.selectedMovie = movie;
     this.onSelectMovie.emit(movie);
   }

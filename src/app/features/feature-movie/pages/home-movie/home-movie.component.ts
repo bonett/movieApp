@@ -37,8 +37,6 @@ export class HomeMovieComponent implements OnInit {
   }
 
   selectMovie(movie: Movie) {
-    console.log(movie);
-    
     this.selectedMovie = movie;
   }
 

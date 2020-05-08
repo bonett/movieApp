@@ -2,7 +2,7 @@
     <section>
         <div class="row">
             <div class="col-3 list">
-                <app-movie-list *ngIf="movies" [movies]="selectedMovie" (onSelectMovie)="selectMovie($event)"
+                <app-movie-list [movieList]="movies" (onSelectMovie)="selectMovie($event)"
                     (onRemoveMovie)="removeMovie($event)"></app-movie-list>
             </div>
             <div class="col-9">

@@ -1,6 +1,6 @@
 <div  class="row">
     <div class="col-12">
-        <div *ngFor="let movie of movies; index as i" class="card"
+        <div *ngFor="let movie of movieList; index as i" class="card"
             [class.selected]="movie === selectedMovie" (click)="handleSelectMovie(movie)">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
