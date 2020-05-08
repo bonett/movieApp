@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-top-movie',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMovieComponent implements OnInit {
 
-  constructor() { }
+  public movies: Array<Movie>;
+
+  constructor(
+    private _movieService: MovieService
+  ) { }
 
   ngOnInit(): void {
+    this._movieService.getMovies()
+    .subscribe((res: Array<Movie>) => {
+      this.movies = res;
+    });
   }
 
 }

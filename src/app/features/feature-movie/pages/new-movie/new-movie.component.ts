@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MovieService } from '../../services/movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-movie',
@@ -13,7 +14,8 @@ export class NewMovieComponent implements OnInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private _movieService: MovieService
+    private _movieService: MovieService,
+    private _router: Router
   ) {
 
     this.movieForm = new FormGroup({
@@ -62,8 +64,8 @@ export class NewMovieComponent implements OnInit {
     };
 
     this._movieService.createMovie(payload).subscribe((response)=>{
-      console.log('repsonse ',response);
-    })
+      this._router.navigate(['/home']);
+    });
 
 
   }

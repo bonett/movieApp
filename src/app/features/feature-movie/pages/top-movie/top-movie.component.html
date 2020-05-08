@@ -4,21 +4,41 @@
             <div class="col-12 top__heading">
                 <h1 class="top__heading--text">TOP 5 Movies</h1>
             </div>
-            <div class="col-12 top__content">
-                <div class="card mb-3">
-                    <div class="card__content">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img class="img-responsive" src="https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg" class="card-img" alt="movie">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                        additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
+            <div *ngIf="movies" class="col-12 top__content">
+                <div *ngFor="let movie of movies; index as i" class="media top__content-item">
+                    <img src={{movie.image}} class="align-self-center mr-3" alt={{movie.title}}>
+                    <div class="media-body">
+                        <h4 class="mt-0 media-body--title">{{movie.title}}</h4>
+                        <h5 class="media-body--date">Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!movies" class="col-12 top__content">
+                <div *ngFor="let movie of [1,2,3,4,5]" class="media top__content-item">
+                    <div class="align-self-center mr-3">
+                        <ngx-skeleton-loader count="1" [theme]="{ 
+                            'border-radius': '5px',
+                            height: '268px',
+                            'width': '182px',
+                            'background-color': '#0a0d21'
+                        }"></ngx-skeleton-loader>
+                    </div>
+                    <div class="media-body">
+                        <div>
+                            <ngx-skeleton-loader count="1" [theme]="{ 
+                                'border-radius': '5px',
+                                height: '40px',
+                                'width': '95%',
+                                'background-color': '#0a0d21'
+                            }"></ngx-skeleton-loader>
+                        </div>
+                        <div>
+                            <ngx-skeleton-loader count="1" [theme]="{ 
+                                'border-radius': '5px',
+                                height: '25px',
+                                'width': '55%',
+                                'background-color': '#0a0d21'
+                            }"></ngx-skeleton-loader>
                         </div>
                     </div>
                 </div>

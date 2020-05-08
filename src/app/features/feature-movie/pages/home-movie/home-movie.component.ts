@@ -22,7 +22,7 @@ export class HomeMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._movieService.getMovies().subscribe((res: any[]) => {
+    this._movieService.getMovies().subscribe((res: Array<Movie>) => {
       this.movies = res;
     });
   }

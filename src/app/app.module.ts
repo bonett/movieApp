@@ -41,7 +41,7 @@ import { StorageService } from './core/services/storage.service';
     InMemoryWebApiModule.forRoot(StorageService),
     SharedModule,
     NgxSkeletonLoaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
   providers: [],
