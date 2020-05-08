@@ -6,6 +6,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ReactiveFormsModule } from '@angular/forms'
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -40,6 +41,8 @@ import { StorageService } from './core/services/storage.service';
     InMemoryWebApiModule.forRoot(StorageService),
     SharedModule,
     NgxSkeletonLoaderModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
