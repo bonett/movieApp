@@ -17,17 +17,7 @@
 </div>
 
 <ng-template #movieList>
-    <div class="card" *ngFor="let movie of movies; index as i">
-        <div class="media top__content-item">
-            <img src={{movie.image}} class="align-self-center mr-3 image--size" alt={{movie.title}}>
-            <div class="media-body">
-                <h4 class="mt-0 media-body--title">{{movie.title}}</h4>
-                <h5 class="media-body--date">Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}
-                </h5>
-                <p><strong>Movie Description:</strong> {{movie.description}}</p>
-            </div>
-        </div>
-    </div>
+    <app-movie-list [movieList]="movies" [showMedia]=true></app-movie-list>
 </ng-template>
 
 <ng-template #skeletonLoader>

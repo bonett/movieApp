@@ -9,6 +9,7 @@ import { Movie } from '../../models/movie';
 export class MovieListComponent implements OnInit {
 
   @Input() movieList: Array<Movie>;
+  @Input() showMedia: boolean;
   @Output() onSelectMovie = new EventEmitter<Movie>();
   @Output() onRemoveMovie = new EventEmitter<Movie>();
 
