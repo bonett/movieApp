@@ -2,13 +2,32 @@
     <main>
         <div class="row">
             <div class="col-3">
-                <div class="list-group">
-                    <a *ngFor="let movie of movies; index as i" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{movie.title}}</h5>
+                <div *ngIf="!movies" class="row">
+                    <div class="col-12">
+                        <div *ngFor="let movie of [1, 2, 3, 4 ,5]; index as i" class="card">
+                            <div class="card-body">
+                                <ngx-skeleton-loader count="1" [theme]="{ 
+                                    height: '20px',
+                                    width: '90%'
+                                  }"></ngx-skeleton-loader>
+                                <ngx-skeleton-loader count="1" [theme]="{ 
+                                    height: '10px',
+                                    width: '65%',
+                                    margin: '0px'
+                                  }"></ngx-skeleton-loader>
+                            </div>
                         </div>
-                        <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
-                    </a>
+                    </div>
+                </div>
+                <div *ngIf="movies" class="row">
+                    <div class="col-12">
+                        <div *ngFor="let movie of movies; index as i" class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{movie.title}}</h5>
+                                <small>Release Date: {{movie.release | dateFormat: 'DD MMMM YYYY'}}</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-3">

@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 /* Components */
 import { AppComponent } from './app.component';
-import { SharedButtonComponent } from './shared/components/shared-button/shared-button.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { HomeMovieComponent } from './features/feature-movie/pages/home-movie/home-movie.component';
 import { TopMovieComponent } from './features/feature-movie/pages/top-movie/top-movie.component';
@@ -24,7 +24,6 @@ import { StorageService } from './core/services/storage.service';
 @NgModule({
   declarations: [
     AppComponent,
-    SharedButtonComponent,
     NavbarComponent,
     HomeMovieComponent,
     TopMovieComponent,
@@ -39,7 +38,8 @@ import { StorageService } from './core/services/storage.service';
     AppRoutingModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(StorageService),
-    SharedModule
+    SharedModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
