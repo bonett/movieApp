@@ -34,10 +34,14 @@ section {
 
     &-body {
 
-        img {
-            border: 1px solid var(--light-grey);
-            border-radius: 6px;
-            box-shadow: 2px 2px 10px var(--light-grey);
+        .image {
+            &--size {
+                border: 1px solid var(--light-grey);
+                border-radius: 6px;
+                box-shadow: 2px 2px 10px var(--light-grey);
+                height: 280px;
+                width: 200px;
+            }
         }
 
         p {

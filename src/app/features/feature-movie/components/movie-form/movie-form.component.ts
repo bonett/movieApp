@@ -11,7 +11,7 @@ import { Movie } from '../../models/movie';
 export class MovieFormComponent implements OnInit {
 
   @Output() onNewMovie = new EventEmitter<Movie>();
-  
+
   public movieForm: FormGroup;
 
   constructor(
@@ -32,23 +32,26 @@ export class MovieFormComponent implements OnInit {
   get image() { return this.movieForm.get('image'); }
   get description() { return this.movieForm.get('description'); }
 
+  /**
+   * Allows get image selected
+   * @param event
+   */
   onFileChange(event) {
-    let reader = new FileReader();
 
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
+    let reader = new FileReader(),
+        file = event.target.files[0];
+    
+    reader.readAsDataURL(file);
 
-      reader.onload = () => {
-        this.movieForm.patchValue({
-          imageMovie: reader.result
-        });
-
-        this._changeDetector.markForCheck();
-      };
-    }
+    reader.onload = () => {
+      this.movieForm.get('image').setValue(reader.result);
+    };
   }
 
+  /**
+   * Allows submit new movie
+   * @param null
+   */
   onSubmitMovie() {
     const form = this.movieForm && this.movieForm.value;
     const payload = {
@@ -58,7 +61,7 @@ export class MovieFormComponent implements OnInit {
       image: form.image,
       description: form.description
     };
-    this.onNewMovie.emit(payload)
+    this.onNewMovie.emit(payload);
   }
 
 }

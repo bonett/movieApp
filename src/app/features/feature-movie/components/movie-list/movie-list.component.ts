@@ -18,11 +18,19 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /**
+   * Allows keep movie selected
+   * @param movie Movie
+   */
   handleSelectMovie(movie: Movie) {
     this.selectedMovie = movie;
     this.onSelectMovie.emit(movie);
   }
 
+  /**
+   * Allows submit a movie to remove
+   * @param movie Movie
+   */
   handleRemoveMovie(movie: Movie) {
     this.onRemoveMovie.emit(movie);
   }
