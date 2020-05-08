@@ -9,6 +9,7 @@ import { Movie } from '../../models/movie';
 export class MovieListComponent implements OnInit {
 
   @Input() movieList: Array<Movie>;
+  @Input() showMedia: boolean;
   @Output() onSelectMovie = new EventEmitter<Movie>();
   @Output() onRemoveMovie = new EventEmitter<Movie>();
 
@@ -18,11 +19,19 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /**
+   * Allows keep movie selected
+   * @param movie Movie
+   */
   handleSelectMovie(movie: Movie) {
     this.selectedMovie = movie;
     this.onSelectMovie.emit(movie);
   }
 
+  /**
+   * Allows submit a movie to remove
+   * @param movie Movie
+   */
   handleRemoveMovie(movie: Movie) {
     this.onRemoveMovie.emit(movie);
   }

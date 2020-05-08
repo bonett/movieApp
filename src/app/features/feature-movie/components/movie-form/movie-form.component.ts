@@ -11,15 +11,16 @@ import { Movie } from '../../models/movie';
 export class MovieFormComponent implements OnInit {
 
   @Output() onNewMovie = new EventEmitter<Movie>();
-  
+
   public movieForm: FormGroup;
+  public pathFile: any;
 
   constructor(
     private _changeDetector: ChangeDetectorRef,
   ) {
     this.movieForm = new FormGroup({
       'title': new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-      'release': new FormControl('', Validators.required),
+      'release': new FormControl(this.currentDate(), Validators.required),
       'image': new FormControl(null, Validators.required),
       'description': new FormControl('', Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)]))
     });
@@ -32,33 +33,49 @@ export class MovieFormComponent implements OnInit {
   get image() { return this.movieForm.get('image'); }
   get description() { return this.movieForm.get('description'); }
 
+  /**
+   * Allows get image selected
+   * @param event
+   */
   onFileChange(event) {
-    let reader = new FileReader();
+
+    const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
+
       const [file] = event.target.files;
+
       reader.readAsDataURL(file);
-
       reader.onload = () => {
-        this.movieForm.patchValue({
-          imageMovie: reader.result
-        });
-
-        this._changeDetector.markForCheck();
+        this.pathFile = reader.result;
       };
+
+      this._changeDetector.markForCheck();
     }
   }
 
+  /**
+   * Allows submit new movie
+   * @param null
+   */
   onSubmitMovie() {
     const form = this.movieForm && this.movieForm.value;
     const payload = {
       id: uuid(),
       title: form.title,
       release: form.release,
-      image: form.image,
+      image: this.pathFile,
       description: form.description
     };
-    this.onNewMovie.emit(payload)
+    this.onNewMovie.emit(payload);
+  }
+
+  /**
+   * Allows get current date
+   */
+  private currentDate() {
+    const currentDate = new Date();
+    return currentDate.toISOString().substring(0, 10);
   }
 
 }
