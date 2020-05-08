@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { StorageService } from 'src/app/core/services/storage.service';
 import { TopMovieComponent } from './top-movie.component';
 
 describe('TopMovieComponent', () => {
@@ -8,6 +10,10 @@ describe('TopMovieComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(StorageService, { delay: 500 }),
+      ],
       declarations: [ TopMovieComponent ]
     })
     .compileComponents();

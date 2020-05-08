@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieFormComponent } from './movie-form.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('MovieFormComponent', () => {
   let component: MovieFormComponent;
@@ -8,6 +9,9 @@ describe('MovieFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        SharedModule
+      ],
       declarations: [ MovieFormComponent ]
     })
     .compileComponents();

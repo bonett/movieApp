@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MovieListComponent } from './movie-list.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -8,6 +8,9 @@ describe('MovieListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        SharedModule
+      ],
       declarations: [ MovieListComponent ]
     })
     .compileComponents();
@@ -16,7 +19,7 @@ describe('MovieListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    component.ngOnInit();
   });
 
   it('should create', () => {
