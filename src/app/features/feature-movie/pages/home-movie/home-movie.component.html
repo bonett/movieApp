@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <section>
-        <div class="row">
-            <div class="col-3 list">
+        <div class="row content">
+            <div class="col-3 content-sidebar">
                 <app-movie-list [movieList]="movies" [showMedia]=false (onSelectMovie)="selectMovie($event)"
                     (onRemoveMovie)="removeMovie($event)"></app-movie-list>
             </div>

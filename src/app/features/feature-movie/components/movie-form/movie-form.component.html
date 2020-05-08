@@ -1,7 +1,7 @@
 <div class="card">
     <form [formGroup]="movieForm" (ngSubmit)="onSubmitMovie()">
         <div class="card-header d-flex justify-content-between">
-            <h2 class="card-header--title">Add movie</h2>
+            <h2>Add movie</h2>
             <button class="btn btn-primary" [disabled]="!movieForm.valid">Add new movie</button>
         </div>
         <div class="card-body">

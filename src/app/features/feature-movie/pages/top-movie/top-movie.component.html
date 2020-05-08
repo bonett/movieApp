@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <section>
-        <div class="row top">
-            <div class="col-12 top__heading">
-                <h1 class="top__heading--text">TOP 5 Movies</h1>
+        <div class="row content">
+            <div class="col-12">
+                <h1>TOP 5 Movies</h1>
             </div>
 
-            <div *ngIf="movies" class="col-12 top__content">
+            <div *ngIf="movies" class="col-12 content-list">
                 <ng-container *ngTemplateOutlet="movieList"></ng-container>
             </div>
 
-            <div *ngIf="!movies" class="col-12 top__content">
+            <div *ngIf="!movies" class="col-12">
                 <ng-container *ngTemplateOutlet="skeletonLoader"></ng-container>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
 <ng-template #skeletonLoader>
     <div class="card" *ngFor="let movie of [1,2,3,4,5]">
-        <div class="media top__content-item">
+        <div class="media">
             <div class="align-self-center mr-3">
                 <ngx-skeleton-loader count="1" [theme]="{ 
                 'border-radius': '2px',

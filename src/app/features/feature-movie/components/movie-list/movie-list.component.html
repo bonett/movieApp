@@ -1,7 +1,7 @@
 <div *ngFor="let movie of movieList; index as i" class="card" [class.selected]="movie === selectedMovie"
     (click)="handleSelectMovie(movie)">
     <div class="media">
-        <img *ngIf="showMedia" src={{movie.image}} class="align-self-center mr-3 image--size" alt={{movie.title}}>
+        <img *ngIf="showMedia" src={{movie.image}} class="align-self-center mr-3" alt={{movie.title}}>
         <div class="card-body">
             <div *ngIf="showMedia" class="d-flex flex-column justify-content-start">
                 <h2 class="mt-0">{{movie.title}}</h2>
@@ -10,7 +10,7 @@
             </div>
             <div *ngIf="!showMedia" class="d-flex flex-row justify-content-between">
                 <h4>{{movie.title}}</h4>
-                <a (click)="handleRemoveMovie(movie)" class="icon-color" [hidden]="movie !== selectedMovie"><i
+                <a (click)="handleRemoveMovie(movie)" class="icon--color" [hidden]="movie !== selectedMovie"><i
                         class="fas fa-trash"></i></a>
             </div>
             <div *ngIf="!showMedia" class="d-flex flex-row justify-content-start">
